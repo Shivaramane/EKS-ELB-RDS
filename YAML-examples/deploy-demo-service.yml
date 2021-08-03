@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app3-nodeport-service  # Name of the Service
+spec:
+  type: NodePort
+  selector:
+  # Loadbalance traffic across Pods matching this label selector
+    app: app3
+  # Accept traffic sent to port 80    
+  ports: 
+    - name: http
+      port: 80    # Service Port
+      targetPort: 80 # Container Port
+      nodePort: 31233 # NodePort

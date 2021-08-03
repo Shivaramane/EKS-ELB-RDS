@@ -1,0 +1,55 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: usermgmt-app
+  name: usermgmt-ms
+  namespace: dev3
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: usermgmt-ms-app
+  template: 
+    metadata: 
+      labels: 
+        app: usermgmt-ms-app
+    spec: 
+      containers: 
+        - 
+          env: 
+            - 
+              name: DB_HOSTNAME
+              value: mysql
+            - 
+              name: DB_PORT
+              value: "3306"
+            - 
+              name: DB_NAME
+              value: usermgmt
+            - 
+              name: DB_USERNAME
+              value: root
+            - 
+              name: DB_PASSWORD
+              value: dbpassword11
+          image: "stacksimplify/kube-usermanagement-microservice:1.0.0"
+          name: usermgmt-ms-app
+          ports: 
+            - 
+              containerPort: 8095
+              #          livenessProbe:
+              #                  exec:
+              #                          command:
+              #                                  - /bin/sh
+              #                                  - -c
+              #                                  - nc -z localhost 8095
+              #                  initialDelaySeconds: 60
+              #                  periodSeconds: 10
+              #          readinessProbe:
+              #                  httpGet:
+              #                          path: /usermgmt/health-status
+              #                          port: 8095
+              #                  initialDelaySeconds: 60
+              #                  periodSeconds: 10 
