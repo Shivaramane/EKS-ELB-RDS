@@ -21,7 +21,7 @@ https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/mas
 
 4. Create an IAM role for the ALB Ingress Controller and attach the role to the service account. This can be performed only on EKS managed cluster. This will create an IAM Role and bounds that role to K8S Service account.
 
-5. Deploy the Ingress Controller Manifest and verify the ALB Ingress Controller is running.
+5. Deploy the Ingress Controller Manifest and verify the ALB Ingress Controller pod is running.
 
 
 
